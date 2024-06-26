@@ -1,0 +1,12 @@
+# ENVIRONMENT SETUP
+sudo apt-get update
+sudo apt-get upgrade
+
+
+sudo apt install python3-pip 
+
+
+# INSTALL REQUIREMENTS
+pip install -r requirements.txt
+
+
