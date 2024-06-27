@@ -24,4 +24,5 @@ def process_user_query(query, menu):
         max_tokens=150
     )
     
-    return response['choices'][0]['message']['content'].strip()
+    # return response['choices'][0]['message']['content'].strip()
+    return response
