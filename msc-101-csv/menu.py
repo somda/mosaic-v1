@@ -1,5 +1,7 @@
 import csv
 
+
+csv_path = "menu.csv"
 def read_menu_from_csv(csv_path):
     menu = {}
     with open(csv_path, newline='') as csvfile:
@@ -26,14 +28,14 @@ def read_menu_from_csv(csv_path):
 
 
 
-# Test menu
+# # # Test menu
 # if __name__ == "__main__":
 #     csv_path = 'menu.csv'
 #     menu = read_menu_from_csv(csv_path)
 #     print(menu)
 
 
-# Test formatted menu
+# # Test formatted menu
 # if __name__ == "__main__":
 #     csv_path = 'menu.csv'
 #     menu = read_menu_from_csv(csv_path)

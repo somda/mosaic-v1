@@ -1,12 +1,12 @@
 #APPLICATION STRUCTURE
 
+config.py            # Configuration file for API keys and settings
 mosaic-101-csv/
 │
 ├── app.py               # Main application file (Flask server)
 ├── menu.py              # CSV reading and data structuring
 ├── chatbot.py           # Chatbot logic and OpenAI integration
 ├── requirements.txt     # Python dependencies
-├── config.py            # Configuration file for API keys and settings
 └── menu.csv             # CSV menu file
 
 
