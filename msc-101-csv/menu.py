@@ -27,7 +27,6 @@ def read_menu_from_csv(csv_path):
 #     return formatted_menu
 
 
-
 # # # Test menu
 # if __name__ == "__main__":
 #     csv_path = 'menu.csv'

@@ -1,0 +1,86 @@
+[
+    {
+        "id": 3,
+        "name": "BOGO Monday",
+        "short_description": "Buy One Get One Monday",
+        "offer_type": "free",
+        "price": null,
+        "full_description": "Buy any 14\" Pizza and receive a free 14\" cheese pizza. Take out only. Not valid with any other offers.",
+        "artwork": {
+            "url": null
+        },
+        "start_date": "2024-07-06T11:11:00.000Z",
+        "end_date": "2025-08-20T11:11:00.000Z",
+        "minimum_age": null,
+        "maximum_age": null,
+        "female": true,
+        "male": true,
+        "offer_category": {
+            "name": "Pizzas"
+        },
+        "location": {
+            "id": 4,
+            "name": "Napoli Pizza - Lake Mead",
+            "description": "Main Location",
+            "latitude": null,
+            "longitude": null,
+            "status": "approved"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Magarita Pie - XL 24\"",
+        "short_description": "Sliced Tomatoes, Roasted Garlic, Fresh Basil",
+        "offer_type": "paid",
+        "price": "39.99",
+        "full_description": "",
+        "artwork": {
+            "url": null
+        },
+        "start_date": "2024-07-09T11:11:00.000Z",
+        "end_date": "2024-07-23T12:00:00.000Z",
+        "minimum_age": null,
+        "maximum_age": null,
+        "female": true,
+        "male": true,
+        "offer_category": {
+            "name": "Pizzas"
+        },
+        "location": {
+            "id": 3,
+            "name": "Buisness 01 - Downtown",
+            "description": "",
+            "latitude": null,
+            "longitude": null,
+            "status": "awaiting_approval"
+        }
+    },
+    {
+        "id": 1,
+        "name": "Mozzarella sticks",
+        "short_description": "Delicious Mozzarella sticks",
+        "offer_type": "paid",
+        "price": "12.99",
+        "full_description": "",
+        "artwork": {
+            "url": null
+        },
+        "start_date": "2024-07-06T11:11:00.000Z",
+        "end_date": "2024-07-25T11:11:00.000Z",
+        "minimum_age": null,
+        "maximum_age": null,
+        "female": true,
+        "male": true,
+        "offer_category": {
+            "name": "Appetizers"
+        },
+        "location": {
+            "id": 1,
+            "name": "Business 01 - Summerlin",
+            "description": "This is the first line\r\n\r\nThis is the 2nd line",
+            "latitude": null,
+            "longitude": null,
+            "status": "awaiting_approval"
+        }
+    }
+]
