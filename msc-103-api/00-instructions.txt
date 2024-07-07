@@ -1,0 +1,32 @@
+#APPLICATION STRUCTURE
+
+config.py            	 # Configuration file for API keys and settings
+mosaic-103-api/
+│
+├── app.py               # Main application file (Flask server)
+├── api.py               # API authentication and data fetching
+├── chatbot.py           # Chatbot logic and OpenAI integration
+├── requirements.txt     # Python dependencies
+
+
+
+# ENVIRONMENT SETUP
+sudo apt-get update
+sudo apt-get upgrade
+
+
+sudo apt install python3-pip 
+
+
+# INSTALL REQUIREMENTS
+pip install -r requirements.txt
+
+
+# START SERVER
+python3 app.py
+
+
+# REQUEST
+curl -X POST http://127.0.0.1:5000/chat -H "Content-Type: application/json" -d '{"message": "What is the price of Margherita pizza?"}'
+
+
