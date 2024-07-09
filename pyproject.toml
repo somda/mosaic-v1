@@ -17,7 +17,7 @@ dependencies = [
     "instruct-easy @ git+https://github.com/chiefkemist/instruct-easy",
     "uvicorn>=0.30.1",
 ]
-readme = "README.md"
+#readme = "README.md"
 requires-python = ">= 3.8"
 
 [build-system]
@@ -29,6 +29,11 @@ managed = true
 dev-dependencies = [
     "ruff>=0.5.1",
 ]
+
+[tool.rye.scripts]
+pizzeria__dev = "uvicorn mosaic_v1.pizzeria:app --reload"
+pizzeria_assistant__dev = "uvicorn mosaic_v1.pizzeria_assistant_:app --reload"
+pizzeria_api__dev = "uvicorn mosaic_v1.pizzeria_api_:app --reload"
 
 [tool.pyright]
 venvPath = "."

@@ -1,0 +1,161 @@
+* mosaic-v1
+
+Next Level Pizza Ordering with LLMs.
+
+#+begin_src mermaid
+
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#4CAF50', 'secondaryColor': '#FFC107', 'tertiaryColor': '#F44336', 'primaryBorderColor': '#4CAF50', 'secondaryBorderColor': '#FFC107', 'tertiaryBorderColor': '#F44336'}}}%%
+graph TD
+
+%% Scenario 1: Order from website (archaic)
+A[Human] -->|Visit Pizzeria Website| B[Website]
+B -->|Select Items| C[Menu]
+C -->|Add to Cart| D[Cart]
+D -->|Enter Payment Info| E[Payment Gateway]
+E -->|Confirm Order| F[Order Confirmation]
+
+%% Scenario 2: Order with web API and LLM function calling (when API available)
+A1[AI Agent] -->|Invoke LLM| B1[LLM]
+B1 -->|Call Pizzeria API| C1[API Endpoint]
+C1 -->|Select Items| D1[Menu]
+D1 -->|Add to Cart| E1[Cart]
+E1 -->|Enter Payment Info| F1[Payment Gateway]
+F1 -->|Confirm Order| G1[Order Confirmation]
+
+%% Scenario 3: Order with LLM function calling and Playwright (when no API available)
+A2[AI Agent] -->|Invoke LLM| B2[LLM]
+B2 -->|Invoke Playwright| C2[Browser Automation]
+C2 -->|Visit Pizzeria Website| D2[Website]
+D2 -->|Select Items| E2[Menu]
+E2 -->|Add to Cart| F2[Cart]
+F2 -->|Enter Payment Info| G2[Payment Gateway]
+G2 -->|Confirm Order| H2[Order Confirmation]
+
+%% Scenario 4: Order with LLM function calling, AI and voice (when no API available but with microphone available)
+A3[Human] -->|Voice Command| B3[Microphone]
+B3 -->|Invoke LLM| C3[LLM]
+C3 -->|Invoke AI| D3[AI Agent]
+D3 -->|Invoke Playwright| E3[Browser Automation]
+E3 -->|Visit Pizzeria Website| F3[Website]
+F3 -->|Select Items| G3[Menu]
+G3 -->|Add to Cart| H3[Cart]
+H3 -->|Enter Payment Info| I3[Payment Gateway]
+I3 -->|Confirm Order| J3[Order Confirmation]
+
+#+end_src
+
+** Python Environment
+
+[[https://rye-up.com/][Rye: a Hassle-Free Python Experience]]: Installation and configuration
+
+
+On Posix run:
+
+#+begin_src bash
+
+curl -sSf https://rye-up.com/get | bash
+
+#+end_src
+
+On 64bit Windows download [[https://github.com/mitsuhiko/rye/releases/latest/download/rye-x86_64-windows.exe][rye-x86_64-windows.exe]].
+
+
+** Dependencies
+
+Example use of Rye to manage dependencies:
+
+#+begin_src bash
+
+rye add fastapi jinja2 # add dependencies
+rye add instruct-easy --git https://github.com/chiefkemist/instruct-easy # add github dependencies
+rye add --dev ruff pytest isort # add dev dependencies
+
+# then
+
+rye sync                        # updates the virtualenv based on the pyproject.toml
+
+#+end_src
+
+** Python Code Health
+
+Format code:
+
+#+begin_src bash
+
+rye run ruff format # Run the Ruff formatter on the given files or directories
+
+#+end_src
+
+** Configure and run applications
+
+Example Script Configuration to run applications with Rye:
+
+#+begin_src toml
+
+[tool.rye.scripts]
+pizzeria__dev = "uvicorn mosaic_v1.pizzeria:app --reload"
+pizzeria_assistant__dev = "uvicorn mosaic_v1.pizzeria_assistant_:app --reload"
+pizzeria_api__dev = "uvicorn mosaic_v1.pizzeria_api_:app --reload"
+
+#+end_src
+
+Example Run:
+
+#+begin_src bash
+
+rye run pizzeria__dev # run Pizzeria app configured above
+
+# or
+
+
+rye run pizzeria_assistant__dev # run Pizzeria Assistant app configured above
+
+rye run pizzeria_api__dev # run Pizzeria app configured above
+
+#+end_src
+
+** Prompt LLMs with [[https://github.com/chiefkemist/instruct-easy][Instruct Easy]]
+
+#+begin_src python
+
+import asyncio
+
+from pydantic import BaseModel, Field
+
+from instruct_easy import prompt, UserMessage, SystemMessage, LLMModel
+
+class PythonExample(BaseModel):
+    content: str = Field(
+        ..., description="Python code to be executed in Markdown format."
+    )
+
+message = UserMessage(
+    content="Hello Professor, how would you write the Y Combinator function in Python using the standard library?"
+)
+message2 = UserMessage(content="Hello Professor, does 1 + 1 = 2?")
+context = [
+    SystemMessage(
+        content="As a Software Engineering Professor, I am here to help you with your Python coding problems."
+    )
+]
+model = LLMModel.Claude3_Haiku
+
+@prompt(
+    context=context,
+    model=model,
+)
+def test_prompt(_: str, input: PythonExample = None):
+    print(input.content)
+
+@prompt(
+    context=context,
+    model=model,
+)
+async def test_prompt2(_: str, input: PythonExample = None):
+    print(input.content)
+
+test_prompt(message)
+
+asyncio.get_event_loop().run_until_complete(test_prompt2(message2))
+
+#+end_src

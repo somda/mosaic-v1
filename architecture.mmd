@@ -1,0 +1,38 @@
+
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#4CAF50', 'secondaryColor': '#FFC107', 'tertiaryColor': '#F44336', 'primaryBorderColor': '#4CAF50', 'secondaryBorderColor': '#FFC107', 'tertiaryBorderColor': '#F44336'}}}%%
+graph TD
+
+%% Scenario 1: Order from website (archaic)
+A[Human] -->|Visit Pizzeria Website| B[Website]
+B -->|Select Items| C[Menu]
+C -->|Add to Cart| D[Cart]
+D -->|Enter Payment Info| E[Payment Gateway]
+E -->|Confirm Order| F[Order Confirmation]
+
+%% Scenario 2: Order with web API and LLM function calling (when API available)
+A1[AI Agent] -->|Invoke LLM| B1[LLM]
+B1 -->|Call Pizzeria API| C1[API Endpoint]
+C1 -->|Select Items| D1[Menu]
+D1 -->|Add to Cart| E1[Cart]
+E1 -->|Enter Payment Info| F1[Payment Gateway]
+F1 -->|Confirm Order| G1[Order Confirmation]
+
+%% Scenario 3: Order with LLM function calling and Playwright (when no API available)
+A2[AI Agent] -->|Invoke LLM| B2[LLM]
+B2 -->|Invoke Playwright| C2[Browser Automation]
+C2 -->|Visit Pizzeria Website| D2[Website]
+D2 -->|Select Items| E2[Menu]
+E2 -->|Add to Cart| F2[Cart]
+F2 -->|Enter Payment Info| G2[Payment Gateway]
+G2 -->|Confirm Order| H2[Order Confirmation]
+
+%% Scenario 4: Order with LLM function calling, AI and voice (when no API available but with microphone available)
+A3[Human] -->|Voice Command| B3[Microphone]
+B3 -->|Invoke LLM| C3[LLM]
+C3 -->|Invoke AI| D3[AI Agent]
+D3 -->|Invoke Playwright| E3[Browser Automation]
+E3 -->|Visit Pizzeria Website| F3[Website]
+F3 -->|Select Items| G3[Menu]
+G3 -->|Add to Cart| H3[Cart]
+H3 -->|Enter Payment Info| I3[Payment Gateway]
+I3 -->|Confirm Order| J3[Order Confirmation]
