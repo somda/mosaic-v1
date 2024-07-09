@@ -1,0 +1,61 @@
+
+{% extends "layout.jinja2" %}
+
+{% block content %}
+
+<div class="flex flex-col h-screen">
+  <header class="bg-primary text-primary-foreground py-4 px-6">
+    <h1 class="text-2xl font-bold">AI Pizza Ordering Assistant</h1>
+  </header>
+  <main class="flex-1 bg-muted p-6">
+    <div class="bg-background rounded-lg shadow-lg p-4 h-full flex flex-col">
+      <div class="flex-1 overflow-y-auto">
+        <div class="py-2 px-4 rounded-lg bg-primary text-primary-foreground self-start">
+          Hello! Welcome to the AI Pizza Ordering Assistant. How can I help you today?
+        </div>
+        <div class="py-2 px-4 rounded-lg bg-secondary text-secondary-foreground self-end">
+          <div class="text-right">I'd like to order a pepperoni pizza please.</div>
+        </div>
+      </div>
+      <form class="mt-4 flex items-center">
+        <input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 mr-2"
+          id="message"
+          placeholder="Type your message..."
+          name="message"
+        />
+        <button
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          type="submit"
+        >
+          Send
+        </button>
+        <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 ml-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-5 h-5"
+          >
+            <line x1="2" x2="22" y1="2" y2="22"></line>
+            <path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"></path>
+            <path d="M5 10v2a7 7 0 0 0 12 5"></path>
+            <path d="M15 9.34V5a3 3 0 0 0-5.68-1.33"></path>
+            <path d="M9 9v3a3 3 0 0 0 5.12 2.12"></path>
+            <line x1="12" x2="12" y1="19" y2="22"></line>
+          </svg>
+          <span class="sr-only">Record audio</span>
+        </button>
+      </form>
+    </div>
+  </main>
+  <footer class="bg-primary text-primary-foreground py-4 px-6 flex justify-between items-center"></footer>
+</div>
+
+{% endblock %}
