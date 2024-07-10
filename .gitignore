@@ -1,7 +1,17 @@
-config.py
+# python generated files
 __pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
 
-msc-100-pdf/__pycache__/
-msc-101-csv/__pycache__/
-msc-102-json/__pycache__/
-msc-103-api/__pycache__/
+# venv
+.venv.idea
+.ruff_cache
+
+# Project
+.envrc
+.idea/
+.ruff_cache/
+config.py
